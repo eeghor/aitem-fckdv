@@ -133,15 +133,17 @@ subplot(1,2,2)
         contour(Cm1,[0,0],'LineWidth',1.5,'LineColor',[108 122 167] ./ 255);
     end
     
+    grid on
+    
     set(gca,'XTick',10:20:NVAL_p)
-    set(gca,'XTickLabel',pa(get(gca,'XTick')))
+    % enforce 2 decimals for tick labels
+    set(gca,'XTickLabel',str2num(sprintf('%.2f ', pa(get(gca,'XTick')))))
     set(gca,'YTick',1:10:NVAL_b)
-    set(gca,'YTickLabel',boa(get(gca,'YTick')))
+    set(gca,'YTickLabel',str2num(sprintf('%.2f ', boa(get(gca,'YTick')))))
     xlabel('momentum')
     ylabel('b')
     fn={'dc/dp=0', 'zero growth rate','c>-1'};
     legend(fn,'Location','North');
-    grid on
     
     % add the point for which there will be an unsteady simulation example
     
