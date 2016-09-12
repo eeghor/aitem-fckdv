@@ -246,10 +246,10 @@ for i=1:size(c1c2s,1)
     'sigma',     sum(dz*kfs.*(Ubase(kp_u3)-kp_cbar).^2.*phi(kp_c1,kp_u3).*phi(kp_c2,kp_u3)),...
     'nu1', (3/2)*sum(dz*kfs.*(Ubase(kp_u3)-kp_cbar).^2.*phi_z(kp_c1,kp_u3).*phi_z(kp_c2,kp_u3).^2),...
     'nu2', (3/2)*sum(dz*kfs.*(Ubase(kp_u3)-kp_cbar).^2.*phi_z(kp_c1,kp_u3).^2.*phi_z(kp_c2,kp_u3)));
-    tmp=Ubase(kp_u3).*phi_z(kp_c1,kp_u3);
-    l.('gamma1')=tmp(2);
-    tmp=Ubase(kp_u3).*phi_z(kp_c2,kp_u3);
-    l.('gamma2')=tmp(2);
+    tmp=(Ubase(kp_u3)-kp_cbar).^2.*phi_z(kp_c1,kp_u3);
+    l.('gamma1')=tmp(1);
+    tmp=(Ubase(kp_u3)-kp_cbar).^2.*phi_z(kp_c2,kp_u3);
+    l.('gamma2')=tmp(1);
 
     % if alphas are negative, multiply all coefficients by -1
     assert(l.('alpha1')*l.('alpha2')>0, 'alpha1 and alpha2 MUST be of the same sign!')
